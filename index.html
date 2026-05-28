@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내 첫 번째 아이디어 - My First Idea</title>
+  <meta name="description" content="화면 중앙에 펼쳐지는 감각적이고 몰입감 있는 첫 번째 아이디어 공간입니다.">
+  
+  <!-- Font Preloading and Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Background Glows -->
+  <div class="glow-container" aria-hidden="true">
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="interactive-glow" id="js-interactive-glow"></div>
+  </div>
+
+  <!-- Main Showcase Container -->
+  <main class="viewport-wrapper">
+    <section class="card-container" id="js-card-container">
+      <div class="glass-card">
+        <!-- Subtitle/Badge -->
+        <div class="badge-wrapper">
+          <span class="pulse-dot"></span>
+          <span class="badge-text">CREATIVE SPARK // NO. 01</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="main-title">내 첫 번째 아이디어</h1>
+
+        <!-- Subtext/Description -->
+        <p class="description">
+          가장 위대한 여정은 작은 생각 하나에서 시작됩니다.<br>
+          당신의 영감을 현실로 만드는 첫 번째 발걸음.
+        </p>
+
+        <!-- Dynamic Action Button -->
+        <div class="button-wrapper">
+          <button class="interactive-btn" id="js-explore-btn">
+            <span class="btn-text">시작하기</span>
+            <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Script -->
+  <script src="script.js"></script>
+</body>
+</html>
