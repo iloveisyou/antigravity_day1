@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>내 첫 번째 아이디어 - My First Idea</title>
   <meta name="description" content="화면 중앙에 펼쳐지는 감각적이고 몰입감 있는 첫 번째 아이디어 공간입니다.">
-  
+
   <!-- Font Preloading and Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Ambient Background Glows -->
   <div class="glow-container" aria-hidden="true">
@@ -32,7 +36,7 @@
         </div>
 
         <!-- Main Title -->
-        <h1 class="main-title">오늘도 힘내세요!</h1>
+        <h1 class="main-title">오늘도 힘내세요!!</h1>
 
         <!-- Subtext/Description -->
         <p class="description">
@@ -44,8 +48,18 @@
         <div class="button-wrapper">
           <button class="interactive-btn" id="js-explore-btn">
             <span class="btn-text">시작하기</span>
-            <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="interactive-btn next-btn theme-red" id="js-next-btn">
+            <span class="btn-text">다음 문장 보기</span>
+            <svg class="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </button>
         </div>
@@ -56,4 +70,5 @@
   <!-- Interactive Script -->
   <script src="script.js"></script>
 </body>
+
 </html>

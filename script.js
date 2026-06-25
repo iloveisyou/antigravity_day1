@@ -45,29 +45,70 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 2. Click effect on the interactive action button
+  // 2. Click effect on the interactive action button & Next Phrase functionality
+  const nextBtn = document.getElementById('js-next-btn');
+  const titleEl = document.querySelector('.main-title');
+
+  const phrases = [
+    "오늘도 힘내세요!!",
+    "오늘도 해냈어요!",
+    "조금씩 나아지고 있어요.",
+    "이대로 계속 가봅시다."
+  ];
+
+  const themes = [
+    { className: 'theme-red', particleColor: '#ff6b6b' },
+    { className: 'theme-yellow', particleColor: '#ffe066' },
+    { className: 'theme-orange', particleColor: '#ff922b' },
+    { className: 'theme-green', particleColor: '#51cf66' }
+  ];
+  let currentPhraseIndex = 0;
+
+  if (titleEl) {
+    titleEl.style.transition = 'opacity 0.25s ease';
+  }
+
   if (exploreBtn) {
     exploreBtn.addEventListener('click', () => {
-      // Gentle vibration/haptic feedback if supported on mobile
-      if (navigator.vibrate) {
-        navigator.vibrate(10);
-      }
-
-      // Elegant scale-down keyframe or transition triggers
+      if (navigator.vibrate) navigator.vibrate(10);
       exploreBtn.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        exploreBtn.style.transform = '';
-      }, 150);
+      setTimeout(() => { exploreBtn.style.transform = ''; }, 150);
+      createParticleEffect(exploreBtn, 'var(--color-accent-secondary)');
+    });
+  }
 
-      // Create a floating particle or ripple just for visual premium feedback
-      createParticleEffect(exploreBtn);
+  if (nextBtn && titleEl) {
+    nextBtn.addEventListener('click', () => {
+      if (navigator.vibrate) navigator.vibrate(10);
+      nextBtn.style.transform = 'scale(0.95)';
+      setTimeout(() => { nextBtn.style.transform = ''; }, 150);
+
+      // Determine next theme color to spark particles matching the new state
+      const nextIndex = (currentPhraseIndex + 1) % phrases.length;
+      const nextTheme = themes[nextIndex];
+      createParticleEffect(nextBtn, nextTheme.particleColor);
+
+      // Fade out, change title text & button classes, fade in
+      titleEl.style.opacity = '0';
+      setTimeout(() => {
+        // Remove all current themes
+        nextBtn.classList.remove('theme-red', 'theme-yellow', 'theme-orange', 'theme-green');
+        
+        currentPhraseIndex = nextIndex;
+        
+        // Add new theme
+        nextBtn.classList.add(themes[currentPhraseIndex].className);
+        
+        titleEl.textContent = phrases[currentPhraseIndex];
+        titleEl.style.opacity = '1';
+      }, 250);
     });
   }
 
   /**
    * Helper to create elegant particle spark on button click
    */
-  function createParticleEffect(element) {
+  function createParticleEffect(element, color) {
     const rect = element.getBoundingClientRect();
     const center = {
       x: rect.left + rect.width / 2,
@@ -89,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         top: ${center.y}px;
         width: 8px;
         height: 8px;
-        background: var(--color-accent-secondary);
+        background: ${color || 'var(--color-accent-secondary)'};
         border-radius: 50%;
         pointer-events: none;
         z-index: 100;

@@ -57,26 +57,26 @@
   :root {
     color-scheme: dark light;
     
-    --theme-bg: light-dark(var(--color-bg-light), var(--color-bg-dark));
-    --theme-text: light-dark(var(--color-text-light), var(--color-text-dark));
-    --theme-text-muted: light-dark(oklch(55% 0.015 345), oklch(78% 0.01 345));
-    --theme-card-bg: light-dark(var(--card-bg-light), var(--card-bg-dark));
-    --theme-card-border: light-dark(var(--card-border-light), var(--card-border-dark));
+    --theme-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --theme-text: oklch(99% 0.003 345);
+    --theme-text-muted: rgba(255, 255, 255, 0.65);
+    --theme-card-bg: rgba(18, 18, 24, 0.72);
+    --theme-card-border: rgba(255, 255, 255, 0.08);
     
-    --theme-glow-1: light-dark(oklch(92% 0.08 345 / 0.15), oklch(62% 0.18 345 / 0.25));
-    --theme-glow-2: light-dark(oklch(94% 0.06 360 / 0.15), oklch(68% 0.14 360 / 0.25));
-    --theme-interactive-glow: light-dark(oklch(94% 0.08 350 / 0.1), oklch(64% 0.15 350 / 0.2));
+    --theme-glow-1: oklch(85% 0.03 240 / 0.15);
+    --theme-glow-2: oklch(88% 0.02 240 / 0.15);
+    --theme-interactive-glow: oklch(85% 0.04 240 / 0.1);
   }
 
   body {
-    background-color: var(--theme-bg);
+    background: var(--theme-bg);
     color: var(--theme-text);
     font-family: var(--font-family);
     display: flex;
     align-items: center;
     justify-content: center;
     perspective: 1000px;
-    transition: background-color 0.8s ease;
+    transition: background 0.8s ease;
   }
 }
 
@@ -191,8 +191,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: light-dark(rgba(0,0,0,0.04), rgba(255, 255, 255, 0.04));
-    border: 1px solid light-dark(rgba(0,0,0,0.06), rgba(255, 255, 255, 0.06));
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 0.5rem 1rem;
     border-radius: 100px;
     margin-block-end: 0.5rem;
@@ -241,6 +241,10 @@
   .button-wrapper {
     margin-block-start: 0.5rem;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .interactive-btn {
@@ -248,15 +252,16 @@
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    background: light-dark(oklch(20% 0.02 260), oklch(95% 0.01 260));
-    color: light-dark(oklch(95% 0.01 260), oklch(12% 0.02 260));
-    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1rem 1.75rem;
     border-radius: 14px;
     font-size: 0.95rem;
     font-weight: 600;
     box-shadow: 
-      0 4px 15px rgba(0, 0, 0, 0.1),
-      0 1px 2px rgba(255, 255, 255, 0.1) inset;
+      0 4px 15px rgba(0, 0, 0, 0.15),
+      inset 0 1px 1px rgba(255, 255, 255, 0.1);
     transition: var(--transition-spring);
     position: relative;
     overflow: hidden;
@@ -266,7 +271,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg in oklch, var(--color-accent-primary), var(--color-accent-secondary));
+    background: rgba(255, 255, 255, 0.05);
     opacity: 0;
     z-index: 1;
     transition: opacity 0.4s ease;
@@ -275,12 +280,66 @@
   .interactive-btn:hover {
     transform: translateY(-4px) scale(1.02);
     box-shadow: 
-      0 12px 24px rgba(0, 0, 0, 0.15),
-      0 0 20px light-dark(oklch(20% 0.02 260 / 0.1), oklch(95% 0.01 260 / 0.2));
+      0 12px 24px rgba(0, 0, 0, 0.25),
+      0 0 20px rgba(255, 255, 255, 0.05);
   }
 
   .interactive-btn:hover::after {
-    opacity: 0.15;
+    opacity: 1;
+  }
+
+  /* Accent themes for Next Phrase Button */
+  .interactive-btn.next-btn {
+    border: none;
+    transition: var(--transition-spring), background 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  /* Red Theme (오늘도 힘내세요!!) */
+  .interactive-btn.next-btn.theme-red {
+    background: linear-gradient(135deg, #e03131 0%, #c92a2a 100%);
+    box-shadow: 0 4px 15px rgba(224, 49, 49, 0.35);
+  }
+  .interactive-btn.next-btn.theme-red:hover {
+    box-shadow: 0 12px 24px rgba(224, 49, 49, 0.5), 0 0 20px rgba(224, 49, 49, 0.2);
+  }
+  .interactive-btn.next-btn.theme-red::after {
+    background: linear-gradient(135deg, #ff6b6b 0%, #e03131 100%);
+  }
+
+  /* Yellow Theme (오늘도 해냈어요!) */
+  .interactive-btn.next-btn.theme-yellow {
+    background: linear-gradient(135deg, #fab005 0%, #f08c00 100%);
+    box-shadow: 0 4px 15px rgba(240, 140, 0, 0.35);
+  }
+  .interactive-btn.next-btn.theme-yellow:hover {
+    box-shadow: 0 12px 24px rgba(240, 140, 0, 0.5), 0 0 20px rgba(240, 140, 0, 0.2);
+  }
+  .interactive-btn.next-btn.theme-yellow::after {
+    background: linear-gradient(135deg, #ffe066 0%, #fab005 100%);
+  }
+
+  /* Orange Theme (조금씩 나아지고 있어요.) */
+  .interactive-btn.next-btn.theme-orange {
+    background: linear-gradient(135deg, #fd7e14 0%, #e8590c 100%);
+    box-shadow: 0 4px 15px rgba(232, 89, 12, 0.35);
+  }
+  .interactive-btn.next-btn.theme-orange:hover {
+    box-shadow: 0 12px 24px rgba(232, 89, 12, 0.5), 0 0 20px rgba(232, 89, 12, 0.2);
+  }
+  .interactive-btn.next-btn.theme-orange::after {
+    background: linear-gradient(135deg, #ff922b 0%, #fd7e14 100%);
+  }
+
+  /* Green Theme (이대로 계속 가봅시다.) */
+  .interactive-btn.next-btn.theme-green {
+    background: linear-gradient(135deg, #37b24d 0%, #2b8a3e 100%);
+    box-shadow: 0 4px 15px rgba(43, 138, 62, 0.35);
+  }
+  .interactive-btn.next-btn.theme-green:hover {
+    box-shadow: 0 12px 24px rgba(43, 138, 62, 0.5), 0 0 20px rgba(43, 138, 62, 0.2);
+  }
+  .interactive-btn.next-btn.theme-green::after {
+    background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
   }
 
   .interactive-btn:active {
