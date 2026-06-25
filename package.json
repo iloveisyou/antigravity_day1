@@ -1,0 +1,9 @@
+{
+  "name": "antigravity-day1",
+  "version": "1.0.0",
+  "description": "Premium Interactive Spark Page",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  }
+}
